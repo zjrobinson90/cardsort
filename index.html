@@ -9,11 +9,11 @@
   <style>
   .draggable { width: 80px; height: 80px; padding: 5px; float: left; margin: 0 10px 10px 0; font-size: .9em; }
   .ui-widget-header p, .ui-widget-content p { margin: 0; }
-  #snaptarget { height: 91px; width: 91px}
+  #snaptarget { height: 90px; width: 90px}
   </style>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script src="jquery.ui.touch-punch.min.js"></script>
+  <script src="https://jquery.ui.touch-punch.min.js"></script>
   <script>
   $( function() {
     $( "#draggable3" ).draggable({revert: true, snap: ".ui-widget-header", snapMode: "inner" });
@@ -21,16 +21,15 @@
   </script>
 </head>
 <body>
+<div id="draggable3" class="draggable ui-widget-content">
+  <p>Inner Snap</p>
+</div>
+
+<br style="clear:both">
  
 <div id="snaptarget" class="ui-widget-header">
   <p>Snap Target</p>
 </div>
- 
-<br style="clear:both">
-
-<div id="draggable3" class="draggable ui-widget-content">
-  <p>Inner Snap</p>
-</div>
- 
+  
 </body>
 </html>
