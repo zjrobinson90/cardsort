@@ -13,7 +13,11 @@
   </style>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script src="jquery.ui.touch-punch.min.js"></script>
+  <!--
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min.js"></script>
+  -->
+  <script src="touchable.js"></script>
+  
   <script>
   $( function() {
     $( "#draggable3" ).draggable({revert: true, snap: ".ui-widget-header", snapMode: "inner" });
@@ -28,7 +32,7 @@
 <br style="clear:both">
  
 <div id="snaptarget" class="ui-widget-header">
-  <p>Snap Targets/p>
+  <p>Snap Targets</p>
 </div>
   
 </body>
