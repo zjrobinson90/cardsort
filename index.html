@@ -7,9 +7,9 @@
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="https://jqueryui.com/draggable/#snap-to/resources/demos/style.css">
   <style>
-  .draggable { width: 80px; height: 80px; padding: 5px; float: left; margin: 0 10px 10px 0; font-size: .9em; }
+  .draggable { width: 100px; height: 100px; line-height: 100px; padding: 5px; float: left; margin: 0 10px 10px 0; font-size: 1em; border-radius: 50%; text-align: center }
   .ui-widget-header p, .ui-widget-content p { margin: 0; }
-  #snaptarget { height: 90px; width: 90px}
+  #snaptarget { width: 100px; height: 100px; line-height: 100px; padding: 5px; margin: 0px 200px 0px 200px; border-radius: 50%; text-align: center }
   </style>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -20,7 +20,7 @@
   
   <script>
   $( function() {
-    $( "#draggable1" ).draggable({revert: true, snap: ".ui-widget-header", snapMode: "inner" });
+    $( "#draggable1" ).draggable({revert: true, snap: ".ui-widget-header", snapMode: "inner", snapTolerance: 60});
 	$( "#draggable2" ).draggable({revert: true, snap: ".ui-widget-header", snapMode: "inner" });
 	$( "#draggable3" ).draggable({revert: true, snap: ".ui-widget-header", snapMode: "inner" });
 	$( "#draggable4" ).draggable({revert: true, snap: ".ui-widget-header", snapMode: "inner" });
@@ -33,28 +33,33 @@
   <p>1</p>
 </div>
 
+<br style="clear:both">
+
 <div id="draggable2" class="draggable ui-widget-content">
   <p>2</p>
 </div>
+
+<br style="clear:both">
 
 <div id="draggable3" class="draggable ui-widget-content">
   <p>3</p>
 </div>
 
+<div id="snaptarget" class="ui-widget-header">
+  <p>Snap Targets</p>
+</div>
+
+<br style="clear:both">
+
 <div id="draggable4" class="draggable ui-widget-content">
   <p>4</p>
 </div>
+
+<br style="clear:both">
 
 <div id="draggable5" class="draggable ui-widget-content">
   <p>5</p>
 </div>
 
-
-<br style="clear:both">
- 
-<div id="snaptarget" class="ui-widget-header">
-  <p>Snap Targets</p>
-</div>
-  
 </body>
 </html>
