@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Droppable - Accept</title>
+  <!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">-->
+  <style>
+	#droppable { width: 300px; height: 300px; padding: 0.5em; float: left; margin: 10px; }
+	#droppable2 { width: 300px; height: 300px; padding: 0.5em; float: left; margin: 10px; }
+	#holder { width: 1020px; height: 480px; background: #e8e3e8}
+	.ui-widget-content { width: 20%; min-height: 150px; border-radius: 15px; cursor: move; float: left; display: -webkit-box;
+		display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; justify-content: center; align-items: center;
+		background: #fff; font-weight: bold; font-family: sans-serif; text-transform: uppercase; box-shadow: 0px 2px 3px 2px rgba(0,0,0,.2); }
+	.ui-droppable-hover .lists { border-color: #000; }
+	.lists { height: 200px; width: 300px; outline: 1px solid #000; border: 1px solid transparent; }
+	li { background: #fff; padding: 10px; list-style: none; }
+	ul{ padding: 0px; }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+$(document).ready(function(){
+addElements();
+	dog();
+});
+function dog(){
+	$("#list1, #list2").sortable({
+		connectWith: ".lists",
+		cursor: "move"
+	}).disableSelection();
+	$( ".ui-widget-header" ).draggable();
+    $( ".ui-widget-content" ).draggable({stack: ".ui-widget-content"});
+    $( ".ui-widget-header" ).droppable({
+      accept: ".ui-widget-content",
+      classes: {
+        "ui-droppable-hover": "ui-state-hover"
+      },
+      drop: function( event, ui) {
+	  // ui.draggable is the div being dragged into the box, and "this" is the box
+		recycleImage( ui.draggable, this);
+      }
+    });
+	// $item is the ui.draggable and $thisItem is "this"
+	function recycleImage($item, $thisItem){
+		$item.remove();
+		var itemName = $item[0].innerText;
+		var itemId = $item[0].id;
+		$($thisItem).find( "ul" ).append("<li id='"+itemId+"' class='list1Items'>"+itemName+"</li>");
+	}
+}
+function addElements() {
+    $("#list1").empty().append(
+        "<li id='item1' class='list1Items'>Item 1</li>" +
+        "<li id='item2' class='list1Items'>Item 2</li>" +
+        "<li id='item3' class='list1Items'>Item 3</li>");
+}
+  var number=4;
+  
+  function createCard(){
+  var cardName = $("#textAdd")[0].value;
+	$("#holder").append("<div id=\"card1\" class=\"ui-widget-content\"><p>"+cardName+"</p></div>");
+		number++;
+		dog();
+		$("#textAdd")[0].value = "";
+}
+
+
+
+  </script>
+</head>
+<body>
+<input type="text" name="textAdd" id="textAdd" value="" placeholder="Enter new card here..." />
+<input type="button" id="add" name="Add" label="Add Card to List" value="Add Card" onclick="createCard();"/>
+
+<div id="holder">
+<div id="droppable" class="ui-widget-header">
+  <h2>Box 1</h2>
+  <ul id='list1' class='lists'></ul>
+</div>
+<div id="droppable2" class="ui-widget-header">
+  <h2>Box 2</h2>
+  <ul id='list2' class='lists'></ul>
+</div>
+</div>
+
+ 
+ 
+</body>
+</html>

@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>jQuery UI Draggable - Snap to element or grid</title>
+  <title>Rate10</title>
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="https://jqueryui.com/draggable/#snap-to/resources/demos/style.css">
   <style>
   .draggable { width: 100px; height: 100px; line-height: 100px; padding: 5px; float: left; margin: 0 10px 10px 0; font-size: 1em; border-radius: 50%; text-align: center }
   .ui-widget-header p, .ui-widget-content p { margin: 0; }
-  #snaptarget { width: 100px; height: 100px; line-height: 100px; padding: 5px; margin: 0px 200px 0px 200px; border-radius: 50%; text-align: center }
+  #snaptarget { width: 100px; height: 100px; line-height: 100px; padding: 5px; margin: 0px 200px 0px 200px; border-radius: 50%; border-style: dashed; border-width: 1px; border-color: black; text-align: center }
   </style>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -21,10 +21,15 @@
   <script>
   $( function() {
     $( "#draggable1" ).draggable({revert: true, snap: ".ui-widget-header", snapMode: "inner", snapTolerance: 60});
-	$( "#draggable2" ).draggable({revert: true, snap: ".ui-widget-header", snapMode: "inner" });
-	$( "#draggable3" ).draggable({revert: true, snap: ".ui-widget-header", snapMode: "inner" });
-	$( "#draggable4" ).draggable({revert: true, snap: ".ui-widget-header", snapMode: "inner" });
-	$( "#draggable5" ).draggable({revert: true, snap: ".ui-widget-header", snapMode: "inner" });
+	$( "#draggable2" ).draggable({revert: true, snap: ".ui-widget-header", snapMode: "inner", snapTolerance: 60 });
+	$( "#draggable3" ).draggable({revert: true, snap: ".ui-widget-header", snapMode: "inner", snapTolerance: 60 });
+	$( "#draggable4" ).draggable({revert: true, snap: ".ui-widget-header", snapMode: "inner", snapTolerance: 60 });
+	$( "#draggable5" ).draggable({revert: true, snap: ".ui-widget-header", snapMode: "inner", snapTolerance: 60 });
+    $( "#draggable6" ).draggable({revert: true, snap: ".ui-widget-header", snapMode: "inner", snapTolerance: 60});
+	$( "#draggable7" ).draggable({revert: true, snap: ".ui-widget-header", snapMode: "inner", snapTolerance: 60 });
+	$( "#draggable8" ).draggable({revert: true, snap: ".ui-widget-header", snapMode: "inner", snapTolerance: 60 });
+	$( "#draggable9" ).draggable({revert: true, snap: ".ui-widget-header", snapMode: "inner", snapTolerance: 60 });
+	$( "#draggable10" ).draggable({revert: true, snap: ".ui-widget-header", snapMode: "inner", snapTolerance: 60 });	
   } );
   </script>
 </head>
@@ -60,6 +65,11 @@
 <div id="draggable5" class="draggable ui-widget-content">
   <p>5</p>
 </div>
+
+<br style="clear:both">
+<br style="clear:both">
+<br style="clear:both">
+<a href="sortcard.html">Card Sort</a>
 
 </body>
 </html>
