@@ -1,1 +1,35 @@
-<h1>Howdy World</h1>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Draggable - Snap to element or grid</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://jqueryui.com/draggable/#snap-to/resources/demos/style.css">
+  <style>
+  .draggable { width: 80px; height: 80px; padding: 5px; float: left; margin: 0 10px 10px 0; font-size: .9em; }
+  .ui-widget-header p, .ui-widget-content p { margin: 0; }
+  #snaptarget { height: 91px; width: 91px}
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#draggable3" ).draggable({revert: true, snap: ".ui-widget-header", snapMode: "inner" });
+  } );
+  </script>
+</head>
+<body>
+ 
+<div id="snaptarget" class="ui-widget-header">
+  <p>I'm a snap target</p>
+</div>
+ 
+<br style="clear:both">
+
+<div id="draggable3" class="draggable ui-widget-content">
+  <p>I only snap to the inner edges of the big box</p>
+</div>
+ 
+</body>
+</html>
