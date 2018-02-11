@@ -66,7 +66,6 @@
   
   <script>
   $( function() {
-  var number = 0;
   var snapTol = 60;
   var revertDur = 150;
   
@@ -88,9 +87,6 @@
 		},
 		drop: function( event, ui) {
 		onDrop( ui.draggable, this);
-		number++;
-		update();
-		console.log(number);
 		}
 	});
 	function onDrop($item, $thisItem){
@@ -106,16 +102,12 @@
 		//$item.remove();
 		document.body.style.background = getRandomColor();
 	}
-	function update(){
-		document.getElementById("rating").innerHTML = "Rating: " + number;
-	}
   });
   </script>
 </head>
 <body style="background-color:darkslategray;">
-<div style="background-color:lightslategray; text-align: center;">
-<a href="sortcard.html">Card Sort</a>
-<p id="rating">Rating:</p>
+<div style="background-color:lightslategray; text-align: center; height: 50px">
+<!--<a href="sortcard.html">Card Sort</a>-->
 </div>
 
 <div class="big-flex-container">
@@ -149,24 +141,24 @@
 </div>
 
 <div class="flex-container-numbers">
-<div id="draggable6" class="draggable ui-widget-content">
-  <p>6</p>
-</div>
-
-<div id="draggable7" class="draggable ui-widget-content">
-  <p>7</p>
-</div>
-
-<div id="draggable8" class="draggable ui-widget-content">
-  <p>8</p>
+<div id="draggable10" class="draggable ui-widget-content">
+  <p>10</p>
 </div>
 
 <div id="draggable9" class="draggable ui-widget-content">
   <p>9</p>
 </div>
 
-<div id="draggable10" class="draggable ui-widget-content">
-  <p>10</p>
+<div id="draggable8" class="draggable ui-widget-content">
+  <p>8</p>
+</div>
+
+<div id="draggable7" class="draggable ui-widget-content">
+  <p>7</p>
+</div>
+
+<div id="draggable6" class="draggable ui-widget-content">
+  <p>6</p>
 </div>
 </div>
 
