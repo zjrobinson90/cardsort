@@ -7,8 +7,7 @@
   <!--<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">-->
   <style>
-	#droppable { width: 300px; height: 300px; padding: 0.5em; float: left; margin: 10px; }
-	#droppable2 { width: 300px; height: 300px; padding: 0.5em; float: left; margin: 10px; }
+	.droppableBox { width: 300px; height: 300px; padding: 0.5em; float: left; margin: 10px; }
 	#holder { width: 1020px; height: 480px; background: #e8e3e8}
 	.ui-widget-content { width: 20%; min-height: 150px; border-radius: 15px; cursor: move; float: left; display: -webkit-box;
 		display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; justify-content: center; align-items: center;
@@ -17,16 +16,19 @@
 	.lists { height: 200px; width: 300px; outline: 1px solid #000; border: 1px solid transparent; }
 	li { background: #fff; padding: 10px; list-style: none; }
 	ul{ padding: 0px; }
+	#errorLog {color: red;}
+	#errorBoxLog {color: red;}
   </style>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="touchable.js"></script>
   <script>
 $(document).ready(function(){
 addElements();
 	dog();
 });
 function dog(){
-	$("#list1, #list2").sortable({
+	$(".lists").sortable({
 		connectWith: ".lists",
 		cursor: "move"
 	}).disableSelection();
@@ -39,11 +41,11 @@ function dog(){
       },
       drop: function( event, ui) {
 	  // ui.draggable is the div being dragged into the box, and "this" is the box
-		recycleImage( ui.draggable, this);
+		createListItem( ui.draggable, this);
       }
     });
 	// $item is the ui.draggable and $thisItem is "this"
-	function recycleImage($item, $thisItem){
+	function createListItem($item, $thisItem){
 		$item.remove();
 		var itemName = $item[0].innerText;
 		var itemId = $item[0].id;
@@ -58,12 +60,30 @@ function addElements() {
 }
   var number=4;
   
-  function createCard(){
+function createCard(){
+  $("#errorLog").empty();
   var cardName = $("#textAdd")[0].value;
-	$("#holder").append("<div id=\"card1\" class=\"ui-widget-content\"><p>"+cardName+"</p></div>");
+  if(cardName!=''){
+	$("#holder").append("<div id=\"card"+number+"\" class=\"ui-widget-content\"><p>"+cardName+"</p></div>");
 		number++;
 		dog();
 		$("#textAdd")[0].value = "";
+  } else {
+	$("#errorLog").append("Cannot add an empty card.");
+  }
+}
+var boxNumber=4;
+function createBox(){
+  $("#errorBoxLog").empty();
+  var boxName = $("#textBoxAdd")[0].value;
+  if(boxName!=''){
+	$("#holder").append("<div class=\"droppableBox ui-widget-header\"><h2 id=\"box1\">"+boxName+"</h2><ul id='list"+boxNumber+"' class='lists'></ul></div>");
+		boxNumber++;
+		dog();
+		$("#textBoxAdd")[0].value = "";
+  } else {
+	$("#errorBoxLog").append("Cannot add an empty box.");
+  }
 }
 
 
@@ -71,17 +91,26 @@ function addElements() {
   </script>
 </head>
 <body>
-<input type="text" name="textAdd" id="textAdd" value="" placeholder="Enter new card here..." />
+<input type="text" name="textBoxAdd" id="textBoxAdd" value="" placeholder="Enter new box name here..." />
+<input type="button" id="addBox" name="AddBox" label="Add Box to List" value="Add Box" onclick="createBox();"/>
+<div id="errorBoxLog"></div>
+
+<input type="text" name="textAdd" id="textAdd" value="" placeholder="Enter new card name here..." />
 <input type="button" id="add" name="Add" label="Add Card to List" value="Add Card" onclick="createCard();"/>
+<div id="errorLog"></div>
 
 <div id="holder">
-<div id="droppable" class="ui-widget-header">
-  <h2>Box 1</h2>
-  <ul id='list1' class='lists'></ul>
+<div class="droppableBox ui-widget-header">
+  <h2 id="box1">Box 1</h2>
+  <ul id="list1" class="lists"></ul>
 </div>
-<div id="droppable2" class="ui-widget-header">
-  <h2>Box 2</h2>
-  <ul id='list2' class='lists'></ul>
+<div class="droppableBox ui-widget-header">
+  <h2 id="box2">Box 2</h2>
+  <ul id="list2" class="lists"></ul>
+</div>
+<div class="droppableBox ui-widget-header">
+  <h2 id="box3">Box 3</h2>
+  <ul id="list3" class="lists"></ul>
 </div>
 </div>
 
