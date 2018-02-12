@@ -87,6 +87,7 @@
 		},
 		drop: function( event, ui) {
 		onDrop( ui.draggable, this);
+		vibrate();
 		}
 	});
 	function onDrop($item, $thisItem){
@@ -102,6 +103,12 @@
 		//$item.remove();
 		document.body.style.background = getRandomColor();
 	}
+	
+	function vibrate() {
+	// Vibrate for 500ms
+		navigator.vibrate([100]);
+	}
+	
   });
   </script>
 </head>
