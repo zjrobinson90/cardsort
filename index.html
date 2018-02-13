@@ -10,7 +10,7 @@
   <!--
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min.js"></script>
   -->
-  <style>  
+  <style>
   * {
 	margin:0; 
 	padding:0;
@@ -39,10 +39,6 @@
 	justify-content: space-around;
 	flex-wrap: wrap;
 	flex-direction: row;
-	background-image: url(pictures/ben.jpg);
-	background-repeat:no-repeat; 
-	background-size:cover; 
-	background-position: center;
 	margin: 0;
 	padding: 0;
   }
@@ -110,7 +106,11 @@
 		}
 		return color;
 	}
-	document.body.style.background = getRandomColor();
+	//document.body.style.background = getRandomColor();
+	var names = ["aatik", "alex", "alexandru", "ayo", "ben", "cassandra", "chester", "donald", "easton", "erik", "joe", "kinga", "lugo", "melan", "mike", "seth", "swepnil", "tanja", "zulmaury"];
+	var rando = Math.floor(Math.random() * names.length);
+	console.log(rando);
+	document.body.style.backgroundImage = "url(pictures/"+names[rando]+".jpg)";
 	}
 	
 	function rateAppear() {
@@ -133,10 +133,10 @@
   </script>
 
 </head>
-<!--<body style="background-color:darkslategray;">
-<body style = "background-image: url(pictures/ben.jpg); background-repeat:no-repeat; background-size:cover; background-position: center">
--->
-<div style="background-color:lightslategray; text-align: center; line-height: 50px; font-family:Arial, Helvetica, sans-serif; margin:0; padding:0;">
+<!--<body style="background-color:darkslategray;">-->
+<body style = "background-image: url(pictures/kinga.jpg); background-repeat:no-repeat; background-size:cover; background-position: center">
+
+<div style="background-color:lightslategray; text-align: center; line-height: 50px; font-family:Arial, Helvetica, sans-serif;">
 <!--<a href="sortcard.html">Card Sort</a>-->
 <p>Banner</p>
 </div>
