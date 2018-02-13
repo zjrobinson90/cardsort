@@ -68,41 +68,35 @@
   $( function() {
   var snapTol = 75;
   var revertDur = 150;
-  
-    $( "#draggable1" ).draggable({revert: true, revertDuration: revertDur, snap: ".ui-widget-header", snapMode: "inner", snapTolerance: snapTol });
-	$( "#draggable2" ).draggable({revert: true, revertDuration: revertDur, snap: ".ui-widget-header", snapMode: "inner", snapTolerance: snapTol });
-	$( "#draggable3" ).draggable({revert: true, revertDuration: revertDur, snap: ".ui-widget-header", snapMode: "inner", snapTolerance: snapTol });
-	$( "#draggable4" ).draggable({revert: true, revertDuration: revertDur, snap: ".ui-widget-header", snapMode: "inner", snapTolerance: snapTol });
-	$( "#draggable5" ).draggable({revert: true, revertDuration: revertDur, snap: ".ui-widget-header", snapMode: "inner", snapTolerance: snapTol });
-    $( "#draggable6" ).draggable({revert: true, revertDuration: revertDur, snap: ".ui-widget-header", snapMode: "inner", snapTolerance: snapTol });
-	$( "#draggable7" ).draggable({revert: true, revertDuration: revertDur, snap: ".ui-widget-header", snapMode: "inner", snapTolerance: snapTol });
-	$( "#draggable8" ).draggable({revert: true, revertDuration: revertDur, snap: ".ui-widget-header", snapMode: "inner", snapTolerance: snapTol });
-	$( "#draggable9" ).draggable({revert: true, revertDuration: revertDur, snap: ".ui-widget-header", snapMode: "inner", snapTolerance: snapTol });
-	$( "#draggable10" ).draggable({
-	start: function( event, ui ) {rateAppear();}, 
-	stop: function( event, ui ) {rateDisappear();},
-		revert: true, revertDuration: revertDur, snap: ".ui-widget-header", snapMode: "inner", snapTolerance: snapTol });	
-	
-	$( "#snaptarget" ).droppable({
-		accept: ".ui-widget-content",
-		classes: {
-        "ui-droppable-hover": "ui-state-hover"
-		},
-		drop: function( event, ui) {
+  //for loop to create all of the draggable numbers (x10)
+  for( i = 0; i <= 10; i++){
+	$( "#draggable"+i ).draggable({
+		start: function( event, ui ) {rateAppear();}, 
+		stop: function( event, ui ) {rateDisappear();},
+		revert: true, revertDuration: revertDur, 
+		snap: ".ui-widget-header", snapMode: "inner", snapTolerance: snapTol });
+  }
+  $( "#snaptarget" ).droppable({
+	accept: ".ui-widget-content",
+	classes: {
+	"ui-droppable-hover": "ui-state-hover"
+	},
+	drop: function( event, ui) {
 		onDrop( ui.draggable, this);
 		vibrate();
-		}
-	});
-	function onDrop($item, $thisItem){
-		//function to set a random color
-		function getRandomColor() {
+	}
+  });
+  function onDrop($item, $thisItem){
+	//function to set a random color
+	function getRandomColor() {
 		var letters = '0123456789ABCDEF';
 		var color = '#';
 		for (var i = 0; i < 6; i++) {
-		color += letters[Math.floor(Math.random() * 16)];
+			color += letters[Math.floor(Math.random() * 16)];
 		}
 		return color;
-}		document.body.style.background = getRandomColor();
+	}
+	document.body.style.background = getRandomColor();
 	}
 	
 	function rateAppear() {
