@@ -92,7 +92,9 @@
 	//adds a function to do something when a draggable is 'dropped' on it
 	drop: function( event, ui) {
 		onDrop( ui.draggable, this);
-		vibrate();
+		try{
+			vibrate();
+		}catch(e){}
 	}
   });
   //function for when something is dropped on the droppable
