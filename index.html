@@ -9,18 +9,19 @@
   <title>Rate10</title>
 
   <style>
-  /* Somehow this is supposed to prevent the address bar from scrolling */
-  html{
+  /* Somehow this stuff in the html and body css's are supposed to prevent the address bar from disappearing when scrolling 
+  https://stackoverflow.com/questions/18061308/prevent-address-bar-hiding-in-mobile-browsers*/
+  
+  html {
 	background-color: black;
     overflow: hidden;
-    width:100%;
     }
 	
-    body{
+    body {
     height:100%;
     position:fixed;
 	-webkit-overflow-scrolling: touch;
-    width:100%;                    
+    width:100%;
     } 
   
   * {
