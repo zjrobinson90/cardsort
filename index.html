@@ -4,12 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rate10</title>
-  <!--
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="https://jqueryui.com/draggable/#snap-to/resources/demos/style.css">
-  <!--
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min.js"></script>
-  -->
+
   <style>
   * {
 	margin:0; 
@@ -92,9 +87,7 @@
 	//adds a function to do something when a draggable is 'dropped' on it
 	drop: function( event, ui) {
 		onDrop( ui.draggable, this);
-		try{
-			vibrate();
-		}catch(e){}
+		vibrate();
 	}
   });
   //function for when something is dropped on the droppable
@@ -109,8 +102,9 @@
 		return color;
 	}
 	//document.body.style.background = getRandomColor();
-	var names = ["aatik", "alex", "alexandru", "ayo", "ben", "cassandra", "chester", "donald", "easton", "erik", "joe", "kinga", "lugo", "melan", "mike", "seth", "swepnil", "tanja", "zulmaury"];
+	var names = ["aatik", "alex", "alexandru", "ayo", "ben", "cassandra", "chester", "donald", "easton", "erik", "joe", "kinga", "lugo", "melan", "mike", "seth", "swapnil", "tanja", "zulmaury"];
 	var rando = Math.floor(Math.random() * names.length);
+	console.log(names.length);
 	console.log(rando);
 	document.body.style.backgroundImage = "url(pictures/"+names[rando]+".jpg)";
 	}
@@ -128,7 +122,9 @@
 	
 	function vibrate() {
 	// Vibrate for 5ms
+	try{
 		navigator.vibrate([5]);
+	}catch(e){}
 	}
 	
   });
