@@ -1,17 +1,32 @@
 <!doctype html>
 <html lang="en">
 <head>
+<link rel="icon" href="http://example.com/favicon.png">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes"> <!-- Makes it full screen when saved to home on Chrome-->
+  <meta name="apple-mobile-web-app-capable" content="yes"> <!-- Makes it full screen when saved to home on Apple-->
   <title>Rate10</title>
 
   <style>
+  /* Somehow this is supposed to prevent the address bar from scrolling */
+  html{
+	background-color: black;
+    overflow: hidden;
+    width:100%;
+    }
+	
+    body{
+    height:100%;
+    position:fixed;
+	-webkit-overflow-scrolling: touch;
+    width:100%;                    
+    } 
+  
   * {
 	margin:0; 
 	padding:0;
-  }
+	}
   
   .draggable { width: 75px; height: 75px; line-height: 75px; 
 	padding: 5px; float: left; margin: 10px 0px 10px 0px; 
@@ -23,8 +38,8 @@
 
   #snaptarget { width: 75px; height: 75px; line-height: 75px; 
 	padding: 5px; margin: 0px 0px 0px 0px; 
-	text-align: center; color: rgba(0, 0, 0, 0.1); font-family: "Arial", Helvetica, sans-serif;
-	border-radius: 50%; border-style: dashed; border-width: 1px; border-color: rgba(0, 0, 0, 0.1);
+	text-align: center; color: rgba(0, 0, 0, 0.05); font-family: "Arial", Helvetica, sans-serif;
+	border-radius: 50%; border-style: dashed; border-width: 1px; border-color: rgba(0, 0, 0, 0.05);
 	background: rgba(0, 0, 0, 0)}
 
   .big-flex-container{
@@ -61,10 +76,6 @@
 	flex-wrap: wrap;
 	flex-direction: column;
 	margin: auto 0;
-  }
-  
-  header.site-header .search-bar{
-  display: none;
   }
   </style>
   
@@ -121,9 +132,9 @@
 		document.getElementById("snaptarget").style.color = "white";
 	}
 	function rateDisappear() {
-		document.getElementById("snaptarget").style.borderColor = "rgba(0, 0, 0, 0.1)";
+		document.getElementById("snaptarget").style.borderColor = "rgba(0, 0, 0, 0.05)";
 		document.getElementById("snaptarget").style.background = "rgba(0, 0, 0, 0)";
-		document.getElementById("snaptarget").style.color = "rgba(0, 0, 0, 0.1)";
+		document.getElementById("snaptarget").style.color = "rgba(0, 0, 0, 0.05)";
 	}
 	
 	function vibrate() {
@@ -132,6 +143,17 @@
 		navigator.vibrate([5]);
 	}catch(e){}
 	}
+	
+	
+	var bg = $("#bg1, #bg2");
+
+	function resizeBackground() {
+		bg.height($(window).height());
+	}
+
+	$(window).resize(resizeBackground);
+	resizeBackground();
+	
 	
   });
   </script>
