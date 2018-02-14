@@ -109,10 +109,15 @@
 	}
   });
   //function for when something is dropped on the droppable
-  function onDrop($item, $thisItem){
-	var names = ["aatik", "alex", "alexandru", "ayo", "ben", "cassandra", "chester", "donald", "easton", "erik", "joe", "kinga", "lugo", "melan", "mike", "seth", "swapnil", "tanja", "zulmaury"];
+  var names = ["aatik", "alex", "alexandru", "ayo", "ben", "cassandra", "chester", "donald", "easton", "erik", "joe", "kinga", "lugo", "melan", "mike", "seth", "swapnil", "tanja", "zulmaury"];
+  var ratings = [];
+  var n = 0;
+  function onDrop($item, $thisItem){	
 	var rando = Math.floor(Math.random() * names.length);
 	document.body.style.backgroundImage = "url(pictures/"+names[rando]+".jpg)";
+	ratings[n] = names[rando] + " " + $item[0].id;
+	console.log(ratings);
+	n++;
 	}
 	
 	function rateAppear() {
