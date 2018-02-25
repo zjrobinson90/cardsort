@@ -33,15 +33,26 @@
 	padding: 5px; float: left; margin: 10px 0px 10px 0px; 
 	font-size: 1em; text-align: center; color: white; font-family: "Arial", Helvetica, sans-serif; font-weight: bold;
 	border-radius: 50%; border-style: solid; border-width: 1px; border-color: white;
-	background: rgba(0, 0, 0, 0.1)}
+	background: rgba(0, 0, 0, 0.1)
+	p {margin: 0;}
+	}
 	
-  .ui-widget-header p, .ui-widget-content p { margin: 0; }
+  .ui-widget-header { 
+	background: rgba(0, 0, 0, 0);
+	color: rgba(0, 0, 0, 0); 
+	border-color: rgba(0, 0, 0, 0);
+	p {margin: 0;}
+	}
 
+  .rateAppear {border-color: white; background-color: rgba(0, 0, 0, 0.1); color: white;}
+  
+  .ui-droppable-hover {background: rgba(0, 0, 0, 0); color: rgba(0, 0, 0, 0); }
+  
   #snaptarget { width: 75px; height: 75px; line-height: 75px; 
 	padding: 5px; margin: 0px 0px 0px 0px; 
-	text-align: center; color: rgba(0, 0, 0, 0.05); font-family: "Arial", Helvetica, sans-serif;
-	border-radius: 50%; border-style: dashed; border-width: 1px; border-color: rgba(0, 0, 0, 0.05);
-	background: rgba(0, 0, 0, 0)}
+	text-align: center; font-family: "Arial", Helvetica, sans-serif;
+	border-radius: 50%; border-style: dashed; border-width: 1px;
+	}
 
   .big-flex-container{
 	display: -webkit-box;
@@ -94,13 +105,15 @@
 		start: function( event, ui ) {rateAppear();}, 
 		stop: function( event, ui ) {rateDisappear();},
 		revert: true, revertDuration: revertDur, 
-		snap: ".ui-widget-header", snapMode: "inner", snapTolerance: snapTol });
+		snap: ".ui-widget-header", 
+		snapMode: "inner", 
+		snapTolerance: snapTol });
   }
   //creates the "rate" droppable area
   $( "#snaptarget" ).droppable({
-	accept: ".ui-widget-content",
+	accept: ".draggable",
 	classes: {
-	"ui-droppable-hover": "ui-state-hover"
+	"ui-droppable-hover": ""
 	},
 	//adds a function to do something when a draggable is 'dropped' on it
 	drop: function( event, ui ) {
@@ -121,14 +134,10 @@
 	}
 	
 	function rateAppear() {
-		document.getElementById("snaptarget").style.borderColor = "white";
-		document.getElementById("snaptarget").style.background = "rgba(0, 0, 0, 0.1)";
-		document.getElementById("snaptarget").style.color = "white";
+		$("#snaptarget").addClass( "rateAppear" );
 	}
 	function rateDisappear() {
-		document.getElementById("snaptarget").style.borderColor = "rgba(0, 0, 0, 0.05)";
-		document.getElementById("snaptarget").style.background = "rgba(0, 0, 0, 0)";
-		document.getElementById("snaptarget").style.color = "rgba(0, 0, 0, 0.05)";
+		$("#snaptarget").removeClass( "rateAppear" );
 	}
 	
 	function vibrate() {
